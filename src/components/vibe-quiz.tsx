@@ -102,20 +102,20 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
                   control={form.control}
                   name={q.id as "q1" | "q2" | "q3"}
                   render={({ field }) => (
-                    <FormItem className="flex flex-col min-h-[24rem] p-6 rounded-xl bg-black/30 border border-primary/30 backdrop-blur-sm shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]">
-                      <FormLabel className="text-2xl font-semibold text-center block mb-6">{q.question}</FormLabel>
+                    <FormItem className="flex flex-col p-4 rounded-xl bg-black/30 border border-primary/30 backdrop-blur-sm shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]">
+                      <FormLabel className="text-xl font-semibold text-center block mb-4">{q.question}</FormLabel>
                       <FormControl>
                         <RadioGroup
                           onValueChange={field.onChange}
                           defaultValue={field.value}
-                          className="grid flex-1 grid-cols-1 sm:grid-cols-3 gap-4"
+                          className="grid grid-cols-1 sm:grid-cols-3 gap-4"
                         >
                           {q.options.map((opt) => (
                             <FormItem key={opt.value}>
                                 <RadioGroupItem value={opt.value} id={`${q.id}-${opt.value}`} className="sr-only peer" />
                                 <FormLabel
                                   htmlFor={`${q.id}-${opt.value}`}
-                                  className="flex text-center h-full items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all bg-card/80 border-transparent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground font-medium text-base"
+                                  className="flex text-center items-center justify-center p-4 min-h-[8rem] border-2 rounded-xl cursor-pointer transition-all bg-card/80 border-transparent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground font-medium text-base"
                                 >
                                   {opt.label}
                                 </FormLabel>
