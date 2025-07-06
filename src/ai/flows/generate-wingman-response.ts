@@ -38,7 +38,7 @@ const GenerateWingmanResponseOutputSchema = z.object({
   responseText: z
     .string()
     .describe(
-      'A markdown-formatted string where the persona is talking directly to the user, providing a suggested response, a seduction tip, and a strategic explanation. The response should be conversational and embody the chosen persona.'
+      'A short, impactful, markdown-formatted string where the persona is talking directly to the user, providing a suggested response and a concise strategic tip.'
     ),
 });
 export type GenerateWingmanResponseOutput = z.infer<
@@ -65,13 +65,11 @@ You've been given some intel on the user from a vibe quiz they took. Use this to
 The user has come to you for help with a specific situation on a dating app. Here's what they said:
 *User's Input:* {{{inputText}}}
 
-Now, talk to the user. Give them your unfiltered advice as **{{persona}}**.
-Your response should be a direct conversation with the user.
-First, give them a killer response to send to their match. Make it sharp, intriguing, and something that fits both your persona and what you know about the user. Present this suggested message clearly.
-Then, explain the *why* behind it. Give them a seduction tip or a strategic move they can use, connecting it back to the psychological principles from the books. Explain how this move leverages their personality.
-Finally, break down the strategy behind your advice, referencing your persona's mindset and the laws of power you're putting into play.
+Now, talk to the user as **{{persona}}**. Your response must be **short, direct, and impactful**.
+First, give them a killer response to send to their match. Make it sharp and intriguing.
+Then, give them one single, powerful tip explaining the strategy. Keep it concise.
 
-Write the entire response as if you, as **{{persona}}**, are having a direct, one-on-one conversation with the user. Use markdown for formatting, like bolding or italics, to add emphasis, but avoid rigid, formal headings like "Response Suggestion". Let your personality shine through in the structure.`,
+Write the entire response as if you, as **{{persona}}**, are having a direct, one-on-one conversation with the user. Use markdown for emphasis, but keep it brief. No long paragraphs.`,
 });
 
 const generateWingmanResponseFlow = ai.defineFlow(
