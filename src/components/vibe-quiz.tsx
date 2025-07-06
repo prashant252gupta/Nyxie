@@ -86,7 +86,7 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-8">
-      <Card className="w-full max-w-3xl bg-card/50 backdrop-blur-lg border-primary/30 shadow-2xl shadow-primary/30 transition-all duration-500 hover:shadow-primary/50 hover:scale-[1.02] ring-1 ring-primary/40">
+      <Card className="w-full max-w-3xl bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl">
         <CardHeader className="text-center">
           <CardTitle className="text-5xl font-headline tracking-tight">Quick Vibe Check</CardTitle>
           <CardDescription className="text-xl text-muted-foreground mt-2">
