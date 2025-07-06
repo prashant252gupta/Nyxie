@@ -18,7 +18,7 @@ import {
   LunaLovegoodIcon,
   PatrickBatemanIcon,
 } from "@/components/icons";
-import { SendHorizonal, Bot } from "lucide-react";
+import { SendHorizonal, Bot, Sparkles } from "lucide-react";
 
 const personas = [
   {
@@ -134,29 +134,29 @@ export default function MainApp({ personalityInsights }: { personalityInsights: 
   return (
     <div className="container mx-auto p-4 flex flex-col h-screen max-h-screen">
       <header className="text-center py-6">
-        <h1 className="font-headline text-5xl font-bold text-primary">Nyxie</h1>
-        <p className="font-body text-muted-foreground mt-1">Talk dirty, undress minds.</p>
+        <h1 className="font-headline text-6xl font-bold bg-gradient-to-r from-primary via-pink-400 to-purple-500 bg-clip-text text-transparent animate-shine bg-[length:200%_auto]">Nyxie</h1>
+        <p className="font-body text-muted-foreground mt-2 tracking-wider">Talk dirty, undress minds.</p>
       </header>
       
       {!selectedPersona && (
          <section id="persona-selection" className="mb-8">
-            <h2 className="text-2xl font-bold text-center mb-6 font-headline">Choose your Wingman</h2>
+            <h2 className="text-3xl font-bold text-center mb-8 font-headline">Choose your Wingman</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {personas.map((persona) => (
                 <Card
                   key={persona.id}
                   onClick={() => setSelectedPersona(persona.id)}
                   className={cn(
-                    "cursor-pointer hover:shadow-lg transition-shadow duration-300",
-                    selectedPersona === persona.id && "ring-2 ring-primary"
+                    "cursor-pointer transition-all duration-300 bg-card/50 backdrop-blur-sm border-2 border-transparent hover:border-primary hover:shadow-2xl hover:shadow-primary/20",
+                    selectedPersona === persona.id && "border-primary shadow-2xl shadow-primary/40 ring-2 ring-primary"
                   )}
                 >
                   <CardHeader className="items-center text-center">
-                    <persona.icon className="w-24 h-24 mb-4 text-primary" />
-                    <CardTitle className="font-headline">{persona.name}</CardTitle>
+                    <persona.icon className="w-20 h-20 mb-4 text-primary" />
+                    <CardTitle className="font-headline text-2xl">{persona.name}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-center">{persona.description}</CardDescription>
+                    <CardDescription className="text-center min-h-[40px]">{persona.description}</CardDescription>
                   </CardContent>
                 </Card>
               ))}
@@ -170,13 +170,13 @@ export default function MainApp({ personalityInsights }: { personalityInsights: 
                 <h2 className="text-xl font-bold font-headline">Chatting as {selectedPersona}</h2>
                 <Button variant="outline" onClick={() => { setSelectedPersona(null); setMessages([]); }}>Change Persona</Button>
             </div>
-          <div className="flex-1 flex flex-col bg-card rounded-lg border overflow-hidden">
+          <div className="flex-1 flex flex-col bg-card/30 rounded-lg border overflow-hidden backdrop-blur-sm">
             <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
               <div className="flex flex-col gap-4">
                 {messages.map((msg) => (
                   <div key={msg.id} className={cn("flex items-end gap-2", msg.sender === 'user' ? "justify-end" : "justify-start")}>
                     {msg.sender === 'nyxie' && <Bot className="w-8 h-8 text-primary self-start shrink-0" />}
-                    <div className={cn("rounded-lg px-4 py-2 max-w-[80%]", msg.sender === 'user' ? 'bg-primary text-primary-foreground' : 'bg-muted')}>
+                    <div className={cn("rounded-xl px-4 py-3 max-w-[80%] shadow-md", msg.sender === 'user' ? 'bg-primary text-primary-foreground rounded-br-none' : 'bg-secondary text-secondary-foreground rounded-bl-none')}>
                       <p className="whitespace-pre-wrap">{msg.text}</p>
                     </div>
                   </div>
@@ -184,7 +184,7 @@ export default function MainApp({ personalityInsights }: { personalityInsights: 
                  {isTyping && (
                     <div className="flex items-end gap-2 justify-start">
                         <Bot className="w-8 h-8 text-primary self-start shrink-0" />
-                        <div className="bg-muted rounded-lg px-4 py-2">
+                        <div className="bg-secondary rounded-xl px-4 py-3 rounded-bl-none">
                             <div className="flex items-center gap-1">
                                 <span className="h-2 w-2 bg-primary rounded-full animate-bounce [animation-delay:-0.3s]"></span>
                                 <span className="h-2 w-2 bg-primary rounded-full animate-bounce [animation-delay:-0.15s]"></span>
@@ -195,12 +195,12 @@ export default function MainApp({ personalityInsights }: { personalityInsights: 
                 )}
               </div>
             </ScrollArea>
-            <div className="p-4 border-t bg-background">
+            <div className="p-4 border-t bg-background/80">
               <form onSubmit={form.handleSubmit(handleSubmit)} className="flex items-start gap-4">
                 <Textarea
                   placeholder="What's the situation?"
                   {...form.register("message")}
-                  className="flex-1 resize-none"
+                  className="flex-1 resize-none bg-secondary border-0 focus-visible:ring-2 focus-visible:ring-primary"
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
                         e.preventDefault();

@@ -85,11 +85,11 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-background via-secondary to-background overflow-hidden relative">
-      <Card className="w-full max-w-3xl bg-background/80 backdrop-blur-sm border-primary/20 shadow-2xl shadow-primary/10 z-10">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <Card className="w-full max-w-3xl bg-card/50 backdrop-blur-lg border-primary/20 shadow-2xl shadow-primary/10">
         <CardHeader className="text-center">
-          <CardTitle className="text-4xl font-headline tracking-tight">Quick Vibe Check</CardTitle>
-          <CardDescription className="text-lg text-muted-foreground">
+          <CardTitle className="text-5xl font-headline tracking-tight">Quick Vibe Check</CardTitle>
+          <CardDescription className="text-xl text-muted-foreground mt-2">
             Help Nyxie get on your level.
           </CardDescription>
         </CardHeader>
@@ -103,7 +103,7 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
                   name={q.id as "q1" | "q2" | "q3"}
                   render={({ field }) => (
                     <FormItem className="space-y-4">
-                      <FormLabel className="text-xl font-semibold text-center block">{q.question}</FormLabel>
+                      <FormLabel className="text-2xl font-semibold text-center block">{q.question}</FormLabel>
                       <FormControl>
                         <RadioGroup
                           onValueChange={field.onChange}
@@ -115,9 +115,9 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
                               <RadioGroupItem value={opt.value} id={`${q.id}-${opt.value}`} className="sr-only peer" />
                               <label
                                 htmlFor={`${q.id}-${opt.value}`}
-                                className="flex text-center h-full items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all bg-card hover:bg-accent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
+                                className="flex text-center h-full items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all bg-card/80 border-transparent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
                               >
-                                <span className="font-medium text-sm">{opt.label}</span>
+                                <span className="font-medium text-base">{opt.label}</span>
                               </label>
                             </div>
                           ))}
