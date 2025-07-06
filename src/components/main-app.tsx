@@ -10,7 +10,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { TylerDurdenIcon, HarleyQuinnIcon, DeadpoolIcon } from "@/components/icons";
+import {
+  TylerDurdenIcon,
+  HarleyQuinnIcon,
+  DeadpoolIcon,
+  TonyStarkIcon,
+  LunaLovegoodIcon,
+  PatrickBatemanIcon,
+} from "@/components/icons";
 import { SendHorizonal, Bot } from "lucide-react";
 
 const personas = [
@@ -31,6 +38,24 @@ const personas = [
     name: "Deadpool",
     description: "Sarcastic and hilariously inappropriate. Nothing is off-limits.",
     icon: DeadpoolIcon,
+  },
+  {
+    id: "Tony Stark",
+    name: "Tony Stark",
+    description: "Brilliant, billionaire, playboy, philanthropist. Witty, confident, and a bit arrogant.",
+    icon: TonyStarkIcon,
+  },
+  {
+    id: "Luna Lovegood",
+    name: "Luna Lovegood",
+    description: "Dreamy and ethereal. Responses are quirky, insightful, and uniquely perceptive.",
+    icon: LunaLovegoodIcon,
+  },
+  {
+    id: "Patrick Bateman",
+    name: "Patrick Bateman",
+    description: "Meticulous and materialistic. Obsessed with status, appearance, and Huey Lewis and the News.",
+    icon: PatrickBatemanIcon,
   },
 ];
 
