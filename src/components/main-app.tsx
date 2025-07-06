@@ -18,7 +18,7 @@ import {
   LunaLovegoodIcon,
   PatrickBatemanIcon,
 } from "@/components/icons";
-import { SendHorizonal, Bot, Sparkles } from "lucide-react";
+import { SendHorizonal, Bot } from "lucide-react";
 
 const personas = [
   {
@@ -141,22 +141,30 @@ export default function MainApp({ personalityInsights }: { personalityInsights: 
       {!selectedPersona && (
          <section id="persona-selection" className="mb-8">
             <h2 className="text-3xl font-bold text-center mb-8 font-headline">Choose your Wingman</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {personas.map((persona) => (
                 <Card
                   key={persona.id}
                   onClick={() => setSelectedPersona(persona.id)}
                   className={cn(
-                    "cursor-pointer transition-all duration-300 bg-card/50 backdrop-blur-sm border-2 border-transparent hover:border-primary hover:shadow-2xl hover:shadow-primary/20",
-                    selectedPersona === persona.id && "border-primary shadow-2xl shadow-primary/40 ring-2 ring-primary"
+                    "cursor-pointer transition-all duration-300 relative group overflow-hidden rounded-2xl border",
+                    "bg-neutral-950/50 backdrop-blur-md",
+                    selectedPersona === persona.id
+                      ? "border-primary/80 ring-2 ring-primary/50"
+                      : "border-white/10 hover:border-white/20"
                   )}
                 >
-                  <CardHeader className="items-center text-center">
-                    <persona.icon className="w-20 h-20 mb-4 text-primary" />
-                    <CardTitle className="font-headline text-2xl">{persona.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-center min-h-[40px]">{persona.description}</CardDescription>
+                  <div className={cn(
+                      "absolute -bottom-1/4 -right-1/4 h-1/2 w-1/2 bg-primary/10 rounded-full blur-3xl transition-all duration-500",
+                      "group-hover:scale-[2] group-hover:bg-primary/15",
+                      selectedPersona === persona.id && "scale-[2.5] bg-primary/20"
+                  )} />
+                  <CardContent className="relative p-6 flex flex-col items-center text-center">
+                    <persona.icon className="w-14 h-14 mb-3" />
+                    <CardTitle className="font-headline text-lg">{persona.name}</CardTitle>
+                    <CardDescription className="text-xs text-muted-foreground mt-1 min-h-[48px]">
+                      {persona.description}
+                    </CardDescription>
                   </CardContent>
                 </Card>
               ))}
