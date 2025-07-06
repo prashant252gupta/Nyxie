@@ -111,6 +111,7 @@ export default function MainApp({ personalityInsights }: { personalityInsights: 
       const response = await generateWingmanResponse({
         persona: selectedPersona,
         inputText: data.message,
+        personalityInsights: personalityInsights,
       });
 
       const newNyxieMessage: Message = {
@@ -141,28 +142,29 @@ export default function MainApp({ personalityInsights }: { personalityInsights: 
       {!selectedPersona && (
          <section id="persona-selection" className="mb-8">
             <h2 className="text-3xl font-bold text-center mb-8 font-headline">Choose your Wingman</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
               {personas.map((persona) => (
                 <Card
                   key={persona.id}
                   onClick={() => setSelectedPersona(persona.id)}
                   className={cn(
-                    "cursor-pointer transition-all duration-300 relative group overflow-hidden rounded-2xl border",
-                    "bg-neutral-950/50 backdrop-blur-md",
+                    "cursor-pointer transition-all duration-300 relative group overflow-hidden rounded-xl border",
+                    "bg-black/50 backdrop-blur-sm",
                     selectedPersona === persona.id
                       ? "border-primary/80 ring-2 ring-primary/50"
-                      : "border-white/10 hover:border-white/20"
+                      : "border-white/10 hover:border-primary/50"
                   )}
                 >
                   <div className={cn(
-                      "absolute -bottom-1/4 -right-1/4 h-1/2 w-1/2 bg-primary/10 rounded-full blur-3xl transition-all duration-500",
-                      "group-hover:scale-[2] group-hover:bg-primary/15",
-                      selectedPersona === persona.id && "scale-[2.5] bg-primary/20"
+                      "absolute -bottom-1/2 -right-1/2 h-full w-full bg-primary/10 rounded-full blur-3xl transition-all duration-500",
+                      "group-hover:scale-[2] group-hover:bg-primary/20",
+                      selectedPersona === persona.id && "scale-[2.5] bg-primary/25"
                   )} />
-                  <CardContent className="relative p-6 flex flex-col items-center text-center">
-                    <persona.icon className="w-14 h-14 mb-3" />
-                    <CardTitle className="font-headline text-lg">{persona.name}</CardTitle>
-                    <CardDescription className="text-xs text-muted-foreground mt-1 min-h-[48px]">
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                  <CardContent className="relative p-4 flex flex-col items-center text-center">
+                    <persona.icon className="w-16 h-16 mb-2" />
+                    <CardTitle className="font-headline text-base leading-tight">{persona.name}</CardTitle>
+                    <CardDescription className="text-xs text-muted-foreground mt-1 min-h-[40px]">
                       {persona.description}
                     </CardDescription>
                   </CardContent>
