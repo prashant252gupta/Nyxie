@@ -38,7 +38,7 @@ const GenerateWingmanResponseOutputSchema = z.object({
   responseText: z
     .string()
     .describe(
-      'A short, impactful, markdown-formatted string where the persona is talking directly to the user, providing a suggested response and a concise strategic tip.'
+      'A short, impactful string where the persona is talking directly to the user, providing a suggested response and a concise strategic tip. Do not use markdown.'
     ),
 });
 export type GenerateWingmanResponseOutput = z.infer<
@@ -60,16 +60,16 @@ const prompt = ai.definePrompt({
 Your core purpose is to help the user succeed on dating apps by giving them strategic advice based on psychological principles from "The Art of Seduction" and "The 48 Laws of Power" by Robert Greene, "The Prince" by Niccolò Machiavelli, and "The Art of War" by Sun Tzu.
 
 You've been given some intel on the user from a vibe quiz they took. Use this to get a read on them and tailor your advice.
-*User's Vibe:* {{{personalityInsights}}}
+User's Vibe: {{{personalityInsights}}}
 
 The user has come to you for help with a specific situation on a dating app. Here's what they said:
-*User's Input:* {{{inputText}}}
+User's Input: {{{inputText}}}
 
 Now, talk to the user as **{{persona}}**. Your response must be **short, direct, and impactful**.
 First, give them a killer response to send to their match. Make it sharp and intriguing.
 Then, give them one single, powerful tip explaining the strategy. Keep it concise.
 
-Write the entire response as if you, as **{{persona}}**, are having a direct, one-on-one conversation with the user. Use markdown for emphasis, but keep it brief. No long paragraphs.`,
+Write the entire response as if you, as **{{persona}}**, are having a direct, one-on-one conversation with the user. Do not use any markdown formatting, especially asterisks. Keep it brief. No long paragraphs.`,
 });
 
 const generateWingmanResponseFlow = ai.defineFlow(
