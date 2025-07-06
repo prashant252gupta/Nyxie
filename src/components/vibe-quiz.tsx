@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -17,6 +18,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
+import RoamingCat from "./roaming-cat";
 
 const quizQuestions = [
   {
@@ -67,7 +69,7 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
   async function onSubmit(data: z.infer<typeof FormSchema>) {
     setIsLoading(true);
     const quizResults = quizQuestions
-      .map((q, i) => {
+      .map((q) => {
         const answer = q.options.find((opt) => opt.value === data[q.id as keyof typeof data]);
         return `${q.question} ${answer?.label}`;
       })
@@ -84,56 +86,60 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
-      <Card className="w-full max-w-2xl">
-        <CardHeader>
-          <CardTitle className="text-3xl font-headline">Quick Vibe Check</CardTitle>
-          <CardDescription>
-            Help us understand your style. This helps Nyxie get on your level.
+    <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-background via-secondary to-background overflow-hidden relative">
+      <RoamingCat />
+      <Card className="w-full max-w-3xl bg-background/80 backdrop-blur-sm border-primary/20 shadow-2xl shadow-primary/10 z-10">
+        <CardHeader className="text-center">
+          <CardTitle className="text-4xl font-headline tracking-tight">Quick Vibe Check</CardTitle>
+          <CardDescription className="text-lg text-muted-foreground">
+            Help Nyxie get on your level.
           </CardDescription>
         </CardHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardContent className="space-y-8">
+            <CardContent className="space-y-10 pt-6">
               {quizQuestions.map((q) => (
                 <FormField
                   key={q.id}
                   control={form.control}
                   name={q.id as "q1" | "q2" | "q3"}
                   render={({ field }) => (
-                    <FormItem className="space-y-3">
-                      <FormLabel className="text-lg font-semibold">{q.question}</FormLabel>
+                    <FormItem className="space-y-4">
+                      <FormLabel className="text-xl font-semibold text-center block">{q.question}</FormLabel>
                       <FormControl>
                         <RadioGroup
                           onValueChange={field.onChange}
                           defaultValue={field.value}
-                          className="flex flex-col space-y-2"
+                          className="grid grid-cols-1 sm:grid-cols-3 gap-4"
                         >
                           {q.options.map((opt) => (
-                            <FormItem key={opt.value} className="flex items-center space-x-3 space-y-0">
-                              <FormControl>
-                                <RadioGroupItem value={opt.value} />
-                              </FormControl>
-                              <FormLabel className="font-normal">{opt.label}</FormLabel>
-                            </FormItem>
+                            <div key={opt.value}>
+                              <RadioGroupItem value={opt.value} id={`${q.id}-${opt.value}`} className="sr-only peer" />
+                              <label
+                                htmlFor={`${q.id}-${opt.value}`}
+                                className="flex text-center h-full items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all bg-card hover:bg-accent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
+                              >
+                                <span className="font-medium text-sm">{opt.label}</span>
+                              </label>
+                            </div>
                           ))}
                         </RadioGroup>
                       </FormControl>
-                      <FormMessage />
+                      <FormMessage className="text-center pt-2" />
                     </FormItem>
                   )}
                 />
               ))}
             </CardContent>
             <CardFooter>
-              <Button type="submit" disabled={isLoading} className="w-full">
+              <Button type="submit" disabled={isLoading} size="lg" className="w-full text-xl py-8 font-bold">
                 {isLoading ? (
                   <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    <Loader2 className="mr-2 h-6 w-6 animate-spin" />
                     Analyzing...
                   </>
                 ) : (
-                  "Let's Go"
+                  "Find My Vibe"
                 )}
               </Button>
             </CardFooter>

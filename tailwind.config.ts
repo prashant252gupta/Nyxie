@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -93,11 +94,16 @@ export default {
           "20%, 80%": { opacity: "1" },
           "100%": { opacity: "0" },
         },
+        "roam-cat": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(calc(100vw + 100%))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in-out": "fade-in-out 3s ease-in-out forwards",
+        "roam-cat": "roam-cat 25s linear infinite",
       },
     },
   },
