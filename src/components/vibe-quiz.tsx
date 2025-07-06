@@ -103,26 +103,31 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
                   name={q.id as "q1" | "q2" | "q3"}
                   render={({ field }) => (
                     <FormItem className="space-y-4">
-                      <FormLabel className="text-2xl font-semibold text-center block">{q.question}</FormLabel>
-                      <FormControl>
-                        <RadioGroup
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                          className="grid grid-cols-1 sm:grid-cols-3 gap-4"
-                        >
-                          {q.options.map((opt) => (
-                            <div key={opt.value}>
-                              <RadioGroupItem value={opt.value} id={`${q.id}-${opt.value}`} className="sr-only peer" />
-                              <label
-                                htmlFor={`${q.id}-${opt.value}`}
-                                className="flex text-center h-full items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all bg-card/80 border-transparent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
-                              >
-                                <span className="font-medium text-base">{opt.label}</span>
-                              </label>
-                            </div>
-                          ))}
-                        </RadioGroup>
-                      </FormControl>
+                      <div className="p-4 rounded-xl bg-black/20 border border-white/10 backdrop-blur-sm">
+                        <FormLabel className="text-2xl font-semibold text-center block">{q.question}</FormLabel>
+                      </div>
+                      
+                      <div className="p-4 rounded-xl bg-black/20 border border-white/10 backdrop-blur-sm">
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+                          >
+                            {q.options.map((opt) => (
+                              <div key={opt.value}>
+                                <RadioGroupItem value={opt.value} id={`${q.id}-${opt.value}`} className="sr-only peer" />
+                                <label
+                                  htmlFor={`${q.id}-${opt.value}`}
+                                  className="flex text-center h-full items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all bg-card/80 border-transparent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
+                                >
+                                  <span className="font-medium text-base">{opt.label}</span>
+                                </label>
+                              </div>
+                            ))}
+                          </RadioGroup>
+                        </FormControl>
+                      </div>
                       <FormMessage className="text-center pt-2" />
                     </FormItem>
                   )}
