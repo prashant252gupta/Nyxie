@@ -18,7 +18,6 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
-import RoamingCat from "./roaming-cat";
 
 const quizQuestions = [
   {
@@ -87,7 +86,6 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-br from-background via-secondary to-background overflow-hidden relative">
-      <RoamingCat />
       <Card className="w-full max-w-3xl bg-background/80 backdrop-blur-sm border-primary/20 shadow-2xl shadow-primary/10 z-10">
         <CardHeader className="text-center">
           <CardTitle className="text-4xl font-headline tracking-tight">Quick Vibe Check</CardTitle>
