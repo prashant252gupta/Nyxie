@@ -85,8 +85,8 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <Card className="w-full max-w-3xl bg-card/50 backdrop-blur-lg border-primary/20 shadow-2xl shadow-primary/10">
+    <div className="flex flex-col items-center justify-center min-h-screen p-8">
+      <Card className="w-full max-w-3xl bg-card/50 backdrop-blur-lg border-primary/30 shadow-2xl shadow-primary/30 transition-all duration-500 hover:shadow-primary/50 hover:scale-[1.02] ring-1 ring-primary/40">
         <CardHeader className="text-center">
           <CardTitle className="text-5xl font-headline tracking-tight">Quick Vibe Check</CardTitle>
           <CardDescription className="text-xl text-muted-foreground mt-2">
@@ -102,29 +102,27 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
                   control={form.control}
                   name={q.id as "q1" | "q2" | "q3"}
                   render={({ field }) => (
-                    <FormItem>
-                      <div className="p-6 rounded-xl bg-black/20 border border-primary/30 backdrop-blur-sm shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]">
-                        <FormLabel className="text-2xl font-semibold text-center block mb-6">{q.question}</FormLabel>
-                        <FormControl>
-                          <RadioGroup
-                            onValueChange={field.onChange}
-                            defaultValue={field.value}
-                            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
-                          >
-                            {q.options.map((opt) => (
-                              <div key={opt.value}>
+                    <FormItem className="p-6 rounded-xl bg-black/20 border border-primary/30 backdrop-blur-sm shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]">
+                      <FormLabel className="text-2xl font-semibold text-center block mb-6">{q.question}</FormLabel>
+                      <FormControl>
+                        <RadioGroup
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                          className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+                        >
+                          {q.options.map((opt) => (
+                            <FormItem key={opt.value}>
                                 <RadioGroupItem value={opt.value} id={`${q.id}-${opt.value}`} className="sr-only peer" />
-                                <label
+                                <FormLabel
                                   htmlFor={`${q.id}-${opt.value}`}
-                                  className="flex text-center h-full items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all bg-card/80 border-transparent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
+                                  className="flex text-center h-full items-center justify-center p-6 border-2 rounded-xl cursor-pointer transition-all bg-card/80 border-transparent hover:border-primary peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground font-medium text-base"
                                 >
-                                  <span className="font-medium text-base">{opt.label}</span>
-                                </label>
-                              </div>
-                            ))}
-                          </RadioGroup>
-                        </FormControl>
-                      </div>
+                                  {opt.label}
+                                </FormLabel>
+                            </FormItem>
+                          ))}
+                        </RadioGroup>
+                      </FormControl>
                       <FormMessage className="text-center pt-2" />
                     </FormItem>
                   )}
