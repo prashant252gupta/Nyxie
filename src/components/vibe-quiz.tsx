@@ -86,7 +86,7 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-8">
-      <Card className="w-full max-w-3xl bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl">
+      <Card className="w-full max-w-3xl bg-secondary/40 backdrop-blur-xl border border-primary/30 rounded-2xl p-4">
         <CardHeader className="text-center">
           <CardTitle className="text-5xl font-headline tracking-tight">Quick Vibe Check</CardTitle>
           <CardDescription className="text-xl text-muted-foreground mt-2">
@@ -102,13 +102,13 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
                   control={form.control}
                   name={q.id as "q1" | "q2" | "q3"}
                   render={({ field }) => (
-                    <FormItem className="p-6 rounded-xl bg-black/20 border border-primary/30 backdrop-blur-sm shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]">
+                    <FormItem className="flex flex-col min-h-[24rem] p-6 rounded-xl bg-black/30 border border-primary/30 backdrop-blur-sm shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]">
                       <FormLabel className="text-2xl font-semibold text-center block mb-6">{q.question}</FormLabel>
                       <FormControl>
                         <RadioGroup
                           onValueChange={field.onChange}
                           defaultValue={field.value}
-                          className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+                          className="grid flex-1 grid-cols-1 sm:grid-cols-3 gap-4"
                         >
                           {q.options.map((opt) => (
                             <FormItem key={opt.value}>
