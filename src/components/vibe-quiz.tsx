@@ -103,11 +103,11 @@ export default function VibeQuiz({ onComplete }: VibeQuizProps) {
                   name={q.id as "q1" | "q2" | "q3"}
                   render={({ field }) => (
                     <FormItem className="space-y-4">
-                      <div className="p-4 rounded-xl bg-black/20 border border-white/10 backdrop-blur-sm">
+                      <div className="p-4 rounded-xl bg-black/20 border border-primary/30 backdrop-blur-sm shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]">
                         <FormLabel className="text-2xl font-semibold text-center block">{q.question}</FormLabel>
                       </div>
                       
-                      <div className="p-4 rounded-xl bg-black/20 border border-white/10 backdrop-blur-sm">
+                      <div className="p-4 rounded-xl bg-black/20 border border-primary/30 backdrop-blur-sm shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/40 hover:scale-[1.02]">
                         <FormControl>
                           <RadioGroup
                             onValueChange={field.onChange}
