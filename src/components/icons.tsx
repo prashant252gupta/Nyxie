@@ -7,15 +7,15 @@ export const TylerDurdenIcon = ({ className }: { className?: string }) => (
   >
     <path d="M5 3h8v1h-8z M4 4h10v1h-10z M5 5h8v1h-8z" fill="#362015" />
     <path d="M4 5h1v1h-1z M13 5h1v1h-1z" fill="#593623" />
-    <path d="M4 6h10v3h-10z" fill="#111" />
+    <path d="M4 6h10v3h-10z" fill="#F2C6A3" />
     <path d="M5 9h8v3h-8z" fill="#F2C6A3" />
-    <path d="M4 9h1v1h-1z M13 9h1v1h-1z" fill="#F2C6A3" />
+    <path d="M4 9h1v1h-1z M13 9h1v1h-1z" fill="#D49A6A" />
     <path d="M3 11h1v8h-1z M14 11h1v8h-1z" fill="#D4473D" />
     <path d="M4 11h2v8h-2z M12 11h2v8h-2z" fill="#B92F27" />
     <path d="M6 11h6v8h-6z" fill="#4A4A4A" />
     <path d="M2 12h1v7h-1z M15 12h1v7h-1z" fill="#B92F27" />
     <path d="M0 13h2v5h-2z M16 13h2v5h-2z" fill="#D4473D" />
-    <path d="M4 19h10v1h-10z" fill="#B92F27" />
+    <path d="M4 19h10v1h-10z" fill="#3A3A3A" />
   </svg>
 );
 
@@ -100,22 +100,15 @@ export const LunaLovegoodIcon = ({ className }: { className?: string }) => (
 
 export const PatrickBatemanIcon = ({ className }: { className?: string }) => (
   <svg
-    viewBox="0 0 64 64"
+    viewBox="0 0 22 22"
     shapeRendering="crispEdges"
     className={className}
-    aria-label="Patrick Bateman Icon"
+    aria-label="Knife Icon"
   >
-    <rect
-      x="8"
-      y="20"
-      width="48"
-      height="24"
-      rx="2"
-      fill="#fffff0"
-      stroke="#000"
-      strokeWidth="1"
-    />
-    <rect x="26" y="26" width="12" height="2" fill="#000" />
-    <rect x="22" y="34" width="20" height="1" fill="#bbb" />
+    <path d="M18 3l-14 14h-1v1h1l1-1h1l14-14v-1h-1z" fill="#C0C0C0" />
+    <path d="M17 3l-13 13h-1v1h2l13-13v-1h-1z" fill="#A9A9A9" />
+    <path d="M3 18h2v2H3z" fill="#8B4513" />
+    <path d="M2 17h2v2H2z" fill="#A0522D" />
+    <path d="M4 19h2v2H4z" fill="#654321" />
   </svg>
 );
