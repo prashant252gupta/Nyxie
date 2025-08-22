@@ -2,7 +2,7 @@
 
 **Talk dirty, undress minds.**
 
-[Link to Live Demo](https://your-live-demo-url-here.com) <!--- Replace with your actual deployment URL -->
+[Link to Live Demo](https://https://nyxiebot.netlify.app/) <!--- Replace with your actual deployment URL -->
 
 ---
 
